@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div id="content">
+  <h2>About Teddy Bears Picnic</h2>
+  <p>This is a demo site to show some Flask, Jinja2, HTML and CSS features that you might want to include in your site.</p>
+  <p>Its all COPYRIGHT though, so if you use any of it I will be legally required to beat you with a stick 😊</p>
+  
+  {% if formstuff %}
+    <table>
+      {% for item in formstuff %}
+        <tr>
+          <td><b>{{ item }}</b></td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% endif %}
+  
+  <p>
+    <!-- Simple form handling - NEVER use this with passwords or other sensitive data -->
+    <form>
+      <p> Username: <input type="text" name="username" value="type something here" size="40" /></p> <!-- note how value pre-populates the form, and you need to delete it to add your own value - this might not ever be useful unless you want a default value for lazy site users -->
+      <p> Password: <input type="password" name="password" placeholder="correcthorsebatterystaple"/></p> <!-- note here that placeholder gives hint text, and it disappears when you start typing.  This can be very helpful to users -->
+      <input type="submit" /> <!-- this forces the page to reload with the entered values added as attributes - in flask we can get those values with request.args - see the 'about' route in main.py -->
+    </form>
+  </p>
+
+  &nbsp;<img src="/static/images/programmer.png" />
+</div>  <!-- content -->
+{% endblock %}

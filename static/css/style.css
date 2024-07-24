@@ -1,0 +1,176 @@
+/**
+ * Global style
+ **/
+
+/* Grab some nice Google Fonts */
+ @import url('https://fonts.googleapis.com/css?family=Indie+Flower|Raleway&display=swap');
+
+html {
+  font-family: 'Raleway', cursive;
+}
+
+#wrapper {
+  width: 80%;
+  background-color: papayawhip; /** colour using HTML colour names **/
+  border-radius: 10px;
+  /**padding: 5px;**/
+  margin: 0 auto;
+}
+
+h1 {
+  font-family: 'Indie Flower', cursive;
+  font-size: 60px; 
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  color: #ff0000; /** colour using hex codes **/
+}
+
+p {
+  font-size: 1.1em;
+  color: rgb(36, 28, 17); /** colour using RGB codes **/
+}
+
+table {
+  border: 1px solid red;
+}
+
+td {
+  border: 1px solid black;
+}
+
+
+/**
+ * Header block
+ **/
+header {
+  background-image: url('/static/images/title.png');
+  background-repeat: no-repeat;
+  background-position-x: 5px;
+  background-position-y: 5px;
+  padding: 10px;
+}
+
+
+/**
+ * Navigation block
+ **/
+nav {
+  font-size: 120%;
+  font-weight: bold;
+  background-color:  rebeccapurple;
+  color: white;
+}
+
+/* by using "nav ul" instead of just "ul", only an unordered list in the nav bar will take on this styling, meaning it doesn't mess up unordered lists in the main content */
+nav ul {
+  list-style-type: none;
+  padding: 5px;
+  text-align: center;
+}
+
+nav li {
+  display: inline;
+}
+
+nav li:after {
+  content: ' 🐾 '; /* https://www.compart.com/en/unicode/U+1F43E */
+}
+
+nav li:last-child:after {
+  content: '' /* no paws at the end */
+}
+
+nav a, nav a:visited {
+  color: bisque;
+  text-decoration: none; /* remove underline default */
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+
+/**
+ * MAIN Content block
+ **/
+main {
+  padding: 5px;
+}
+
+
+main img {
+  border: 1px solid silver;
+  box-shadow: 5px 5px 10px #555;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  max-width: 95%; /* stop images blowing out the side of a small screen */
+}
+
+#content {
+  display: inline-block;
+  width: 100%;
+}
+
+
+/**
+ * Footer block
+ **/
+footer {
+  margin: 5 auto;
+  padding: 10px;
+  text-align: center;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: indianred;
+}
+
+footer h2 {
+  color: rebeccapurple;
+  /* Had to use the best font in the world here somewhere... */
+  font-family: "Comic Sans MS"
+}
+
+footer p {
+  color: rgb(241, 177, 177);
+  font-size: 80%;
+}
+
+
+/* Media Queries to handle smaller screens - try scaling the width of the screen to see what happens... and try it on your mobile! */
+@media (max-width: 900px) {
+
+  h1 {
+    font-size: 40px;
+  }
+
+  p {
+    font-size: 150%;
+  }
+
+  header {
+    background-size: contain;
+  }
+
+  nav li {
+    font-size: 100%;
+  }
+}
+
+
+/* too small for a logo image */
+@media (max-width: 600px) {
+
+  header {
+    background-image: none;
+  }
+}
+
+
+/* Teddy images make text wrap weirdly with a small screen */
+@media (max-width: 400px) {
+
+  img {
+    width: 95%;
+  }
+}

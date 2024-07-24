@@ -1,0 +1,45 @@
+<!-- This is the master document which has the
+     main layout, but also where any scripts, css
+     etc also get added -->
+
+<!doctype html>
+<html>
+  <head>
+    <!-- '{{ title }}' gets replaced with the content
+    of the title variable which is passed to the
+    template by the context processor. See the first
+    function in main.py starting with 
+    @app.context_processor
+    -->
+    <title>12DTP Flask Demo - {{ title }}</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  </head>
+
+  <body>
+      <!-- wrap the whole site in a div that we can style
+      which can be useful for a fixed width side, or 
+      other specific layout requirements -->
+    <div id="wrapper">
+      <!-- include 'header.html' gets the
+      contents of 'header.html' and replaces the
+      include statement with them.  This allows you
+      to break up the page into sensible chunks -->
+      <header>{% include 'header.html' %}</header>
+
+      <nav>{% include 'nav.html' %}</nav>
+
+      <!-- a 'block' can be added to, or extended, from
+      other places - this will allow us to change the
+      main content of the page while keeping the
+      header, nav and footer constant.  See home.html
+      for an example of how to extend this block -->
+      <main>{% block content %}{% endblock %}</main>
+
+      <footer>{% include 'footer.html' %}</footer>
+    </div> <!-- #wrapper -->  <!-- it pays to comment your 
+                             closing div tags to avoid 
+                             confusion about which one 
+                             you mean to be closed -->
+  </body>
+</html>

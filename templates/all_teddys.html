@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  {% for teddy in teddys %}
+    <p>
+      <a href="/teddy/{{teddy[0]}}">{{ teddy[1] }}</a>
+    </p>
+  {% endfor %}
+
+{% endblock %}

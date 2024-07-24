@@ -1,0 +1,17 @@
+{% extends 'layout.html' %} 
+<!-- This means go get layout.html and build the page using it.
+     layout.html has several 'includes' in it that force it to go
+     and get the bits it needs to build itself, then come back here
+     with the mostly complete page -->
+
+{% block content %} 
+<!-- the % block content % part in layout.html is the last part of the page
+     to be built.  It will be replaced with the following... -->
+<p>Welcome to the teddy site about teddys.  Here you will find teddys.</p>
+<p>Technically, its a demonstration of how to use Flask with Python... but using teddys.</p>
+<p>There might also be teddys, and possibly also teddys.</p>
+<!-- ...down to here. -->
+{% endblock %}
+
+<!-- and thats it - now the page is fully assembled and can be sent to
+     the browser -->
