@@ -4,8 +4,9 @@ import sqlite3
 import random
 
 app=Flask(__name__)
-app.config.from_object(Config)
 
+# Allows configuration like settings to be tucked away in a separate file.  See config.py
+app.config.from_object(Config)
 
 # Get the title of the website from Config and
 # make it available to all templates. Used in
@@ -23,13 +24,13 @@ def home():
 
 # Displays all teddys in the database
 # TODO: link each teddy to its own details page
-@app.route('/all_teddys')
+@app.route('/teddys')
 def all_teddys():
     # This boilerplate db connection could (should?) be in
     # a function for easy re-use
     conn = sqlite3.connect(app.config['DATABASE'])
     cur = conn.cursor()
-    cur.execute("SELECT * FROM Teddy ORDER BY id;")
+    cur.execute("SELECT * FROM Teddy ORDER BY name;")
     # fetchall returns a list of results
     teddys = cur.fetchall()
     conn.close()  # always close the db when you're done.
@@ -43,6 +44,10 @@ def teddy_details(id):
   # print("The teddy id is {}".format(id))  # DEBUG
   conn = sqlite3.connect(app.config['DATABASE'])
   cur = conn.cursor()
+  
+  # You might be asking yourself why you couldn't write a query like: cur.execute(f"SELECT * FROM Teddy WHERE id={id};") 
+  # Simply put, this is insecure and allows for SQL injection.  For example, if someone set variable id="2; DROP TABLE *;" then the table gets deleted.
+  # Instead, it's better to use the id=? and to provide the parameter as a separate tuple.  "(id,)" looks weird but it's simply a tuple (collection) with one value.
   cur.execute("SELECT * FROM Teddy WHERE id=?;",(id,))
   # fetchone returns a tuple containing the data for one entry
   teddy = cur.fetchone()
