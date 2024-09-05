@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div id="content">
+  <h2>Contact Us</h2>
+  {% if message %}
+    <div>
+      {{ message }}
+    </div>
+  {% endif %}
+  
+  <p>
+    <!-- Simple form handling - NEVER use this with passwords or other sensitive data -->
+    <form>
+      <p> Name: <input type="text" name="username" placeholder="enter your name here" size="40" /></p> <!-- note how value pre-populates the form, and you need to delete it to add your own value - this might not ever be useful unless you want a default value for lazy site users -->
+      <p> Topic: 
+        <div class="dropdown">
+          <select name="menu" id="meun-items">
+            <option disabled selected>Select Cource</option>
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="js">JAVASCRIPT</option>
+            <option value="c">C LANGUAGE</option>
+          </select>
+        </div>
+      </p>
+      <!-- note here that placeholder gives hint text, and it disappears when you start typing.  This can be very helpful to users -->
+      <p> Comment: <input type="text" name="comment" placeholder="enter your comment here"/></p> 
+      
+      <!-- this forces the page to reload with the entered values added as attributes - in flask we can get those values with request.args - see the 'about' route in main.py -->
+      <input type="submit" /> 
+    </form>
+  </p>
+
+  &nbsp;<img src="/static/images/programmer.png" />
+</div>  <!-- content -->
+{% endblock %}
