@@ -2,9 +2,16 @@
 
 {% block content %}
 <div id="content">
+  <h1>{{ another_variable }}</h1>
+  <h2>{{ and_another }}</h2>
+
   {% if teddy[4] %}
     <img src="{{ teddy[4] }}" style="float:right;" />
   {% endif %}
+  {% if teddy[5] %}
+    <img src="/image/{{ teddy[0] }}" style="float:right;" />
+  {% endif %}
+  
   <h2>Teddy Details for {{ teddy[1] }}</h2>
   <p>{{ teddy[2] }}</p>
 </div>
