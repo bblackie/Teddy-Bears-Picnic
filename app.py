@@ -94,5 +94,17 @@ def get_image(image_id):
     return Response(image_data, mimetype='image/jpeg')  # or appropriate MIME type
 
 
+@app.route('/contact-us')
+def contact_us():
+  message = ""
+  if len(request.args) > 0:
+    message = "This message is returned to the form page"
+        
+    name = request.args.get('name')
+    comment = request.args.get('comment')
+    
+  return render_template('contact.html', message=message)
+
+
 if __name__ == '__main__':
   app.run(debug=app.config['DEBUG'], port=8080, host='0.0.0.0') 
