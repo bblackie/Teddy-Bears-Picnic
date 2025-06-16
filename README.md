@@ -17,13 +17,13 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 encountered when running multiple projects on one machine.*
 
 ```
-python -m venv dev
+python -m venv .venv
 ```
 
 ### To activate virtual environment:
 
 ```
-dev\scripts\activate
+.venv\scripts\activate
 ```
 
 ## Install dependencies
